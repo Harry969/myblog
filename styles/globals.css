@@ -2,6 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 基础样式 */
+body {
+  @apply bg-gradient-to-br from-gray-900 to-black min-h-screen text-gray-100;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 0% 0%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(167, 139, 250, 0.1) 0%, transparent 50%);
+}
+
+/* 网格背景 */
+.grid-background {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: center center;
+}
+
+/* 发光效果 */
+.glow {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3),
+              0 0 60px rgba(124, 58, 237, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+}
+
+/* 动态背景渐变 */
+.gradient-animation {
+  background: linear-gradient(-45deg, #2d1b69, #1a1a1a, #2d1b69, #1e1b4b);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+/* 悬浮卡片效果 */
+.hover-card {
+  @apply transition-all duration-300 ease-out;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -5px rgba(124, 58, 237, 0.3);
+}
+
+/* 毛玻璃效果增强版 */
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md rounded-2xl border border-white/10;
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* 动态边框效果 */
+.animated-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124, 58, 237, 0.2),
+    transparent
+  );
+  animation: border-shine 3s infinite;
+}
+
 /* 自定义动画延迟类 */
 .animation-delay-2000 {
   animation-delay: 2s;
@@ -54,16 +128,17 @@
   @apply w-full;
 }
 
-/* 毛玻璃效果卡片 */
-.glass-card {
-  @apply bg-white/70 backdrop-blur-sm rounded-2xl shadow-sm border border-white/20;
-}
-
-/* 渐变背景动画 */
-.gradient-animation {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+/* 新增动画关键帧 */
+@keyframes border-shine {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 @keyframes gradient {

@@ -105,7 +105,7 @@ export default function Home() {
                   I share stories about #programming, #design, and #life on the Internet.
                 </p>
                 <p className="text-gray-600">
-                  My stories have attracted <span className="font-semibold">10,000+</span> followers.
+                My fans are not yet  <span className="font-semibold">10,000+</span> followers.
                 </p>
                 <p className="bg-orange-100/50 p-3 rounded-md text-gray-700 mt-4">
                   There are countless ways to tell a story about the world, this is mine.
@@ -144,7 +144,7 @@ export default function Home() {
             <div className="flex items-center gap-4 mb-4">
               <SiBilibili className="w-6 h-6 text-pink-400" />
               <div>
-                <h3 className="font-semibold">数字游牧人</h3>
+                <h3 className="font-semibold">Harry</h3>
                 <p className="text-sm text-gray-500">99,883 followers • 3,821,585 views</p>
               </div>
             </div>
