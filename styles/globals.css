@@ -2,51 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 基础样式 */
-body {
-  @apply bg-gradient-to-br from-gray-900 to-black min-h-screen text-gray-100;
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 0% 0%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(167, 139, 250, 0.1) 0%, transparent 50%);
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-gray-900 to-black min-h-screen;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 0% 0%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(167, 139, 250, 0.1) 0%, transparent 50%);
+  }
 }
 
-/* 网格背景 */
-.grid-background {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
-  background-position: center center;
-}
-
-/* 发光效果 */
-.glow {
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3),
-              0 0 60px rgba(124, 58, 237, 0.1);
-}
-
-.text-glow {
-  text-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
-}
-
-/* 动态背景渐变 */
-.gradient-animation {
-  background: linear-gradient(-45deg, #2d1b69, #1a1a1a, #2d1b69, #1e1b4b);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-
-/* 悬浮卡片效果 */
-.hover-card {
-  @apply transition-all duration-300 ease-out;
-}
-
-.hover-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px -5px rgba(124, 58, 237, 0.3);
-}
-
-/* 毛玻璃效果增强版 */
+/* 组件样式 */
 .glass-card {
   @apply bg-white/5 backdrop-blur-md rounded-2xl border border-white/10;
   box-shadow: 
@@ -54,41 +20,37 @@ body {
     0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* 动态边框效果 */
-.animated-border {
-  position: relative;
-  overflow: hidden;
-}
-
-.animated-border::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(124, 58, 237, 0.2),
-    transparent
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(
+    135deg,
+    #6366f1 0%,    /* Indigo */
+    #8b5cf6 25%,   /* Purple */
+    #d946ef 50%,   /* Fuchsia */
+    #ec4899 75%,   /* Pink */
+    #f43f5e 100%   /* Rose */
   );
-  animation: border-shine 3s infinite;
 }
 
-/* 自定义动画延迟类 */
-.animation-delay-2000 {
-  animation-delay: 2s;
+/* 动画效果 */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.animation-delay-4000 {
-  animation-delay: 4s;
+.animate-gradient {
+  animation: gradient 8s linear infinite;
+  background-size: 200% 200%;
 }
 
-/* 滚动文字动画 */
-.animate-text-slide-3 > * {
-  animation: text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite;
-}
+/* 其他工具类 */
+.perspective-1000 { perspective: 1000px; }
+.preserve-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+
+/* 滚动行为 */
+html { scroll-behavior: smooth; }
 
 /* 自定义滚动条 */
 ::-webkit-scrollbar {
@@ -96,59 +58,9 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  @apply bg-gray-800;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #666;
-}
-
-/* 选中文字的背景色 */
-::selection {
-  background: rgba(147, 51, 234, 0.2);
-  color: inherit;
-}
-
-/* 导航链接悬停效果 */
-.nav-link {
-  @apply relative text-gray-600 hover:text-gray-900 transition-colors;
-}
-
-.nav-link::after {
-  content: '';
-  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300;
-}
-
-.nav-link:hover::after {
-  @apply w-full;
-}
-
-/* 新增动画关键帧 */
-@keyframes border-shine {
-  0% {
-    left: -100%;
-  }
-  50% {
-    left: 100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  @apply bg-purple-600/50 rounded-full hover:bg-purple-600/70 transition-colors;
 }

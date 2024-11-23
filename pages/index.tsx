@@ -1,10 +1,26 @@
-import React from 'react';
-import Profile from '../components/Profile';
+"use client"
+
+import React from 'react'
+import { Navbar } from '../components/ui/effects'
+import { 
+  Hero, 
+  About, 
+  Skills, 
+  Experience, 
+  Projects, 
+  Contact 
+} from '../components/sections'
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-4">
-      <Profile />
-    </div>
-  );
+    <main className="relative">
+      <Navbar />
+      <Hero />
+      <About />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Contact />
+    </main>
+  )
 } 
